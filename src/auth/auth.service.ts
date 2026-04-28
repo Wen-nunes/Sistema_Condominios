@@ -13,9 +13,22 @@ export class AuthService {
   ) {}
 
   async login(dto: any) {
-    // 1. Busca o usuário
-    const user = await this.usuariosService.findByCpfCnpj(dto.CPF_CNPJ);
+    // 1. Limpa o CPF/CNPJ removendo tudo que não for número
+    const cpfSomenteNumeros = dto.CPF_CNPJ.replace(/\D/g, '');
+
+    // 2. Busca o usuário usando o CPF limpo
+    const user = await this.usuariosService.findByCpfCnpj(cpfSomenteNumeros);
     
+    // LOG DE DEBUG
+    if (!user) {
+      console.log('ERRO LOGIN: Usuário não encontrado no banco com este CPF.');
+    } else {
+      const senhaBate = await bcrypt.compare(dto.password, user.password);
+      if (!senhaBate) {
+        console.log('ERRO LOGIN: Usuário achado, mas a senha (hash) não confere.');
+      }
+    }
+
     // 2. Valida usuário e senha
     if (!user || !(await bcrypt.compare(dto.password, user.password))) {
       throw new UnauthorizedException('Credenciais inválidas');

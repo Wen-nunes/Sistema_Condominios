@@ -3,22 +3,22 @@ import { Fornecedor } from '../../fornecedores/entities/fornecedor.entity';
 
 @Entity('CONTRATOS')
 export class Contrato {
-  @PrimaryGeneratedColumn({ name: 'id_contrato' })
-  idContrato: number;
+  @PrimaryGeneratedColumn({ name: 'ID_CONTRATO' })
+  ID_CONTRATO: number;
 
-  @ManyToOne(() => Fornecedor, fornecedor => fornecedor.contratos)
-  @JoinColumn({ name: 'id_fornecedor' })
-  fornecedor: Fornecedor;
+  @ManyToOne(() => Fornecedor, fornecedor => fornecedor.CONTRATOS)
+  @JoinColumn({ name: 'ID_FORNECEDOR' })
+  ID_FORNECEDOR: Fornecedor;
 
-  @Column({ name: 'descricao', type: 'text', nullable: true })
-  descricao: string;
+  @Column({ name: 'DESCRICAO', type: 'text', nullable: true })
+  DESCRICAO: string;
 
-  @Column({ name: 'data_inicio', type: 'date', nullable: true })
-  dataInicio: Date;
+  @Column({ name: 'DATA_INICIO', type: 'date', nullable: true })
+  DATA_INICIO: Date;
 
-  @Column({ name: 'data_fim', type: 'date', nullable: true })
-  dataFim: Date;
+  @Column({ name: 'DATA_FIM', type: 'date', nullable: true })
+  DATA_FIM: Date;
 
-  @Column({ name: 'valor', type: 'decimal', precision: 10, scale: 2, nullable: true })
-  valor: number;
+  @Column({ name: 'VALOR', type: 'decimal', precision: 10, scale: 2, nullable: true })
+  VALOR: number;
 }

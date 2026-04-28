@@ -2,27 +2,32 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMan
 import { Morador } from '../../moradores/entities/morador.entity';
 import { Recebimento } from '../../recebimentos/entities/recebimento.entity';
 
-@Entity('contas_receber') // Based on users casing
+@Entity('CONTAS_RECEBER')
 export class ContaReceber {
-  @PrimaryGeneratedColumn({ name: 'id_conta_receber' })
-  idContaReceber: number;
+  @PrimaryGeneratedColumn({ name: 'ID_CONTA_RECEBER' })
+  ID_CONTA_RECEBER: number;
 
-  @ManyToOne(() => Morador, morador => morador.contasReceber)
-  @JoinColumn({ name: 'id_morador' })
-  morador: Morador;
+  @ManyToOne(() => Morador, morador => morador.ID_CONTA_RECEBER)
+  @JoinColumn({ name: 'ID_MORADOR' })
+  ID_MORADOR: Morador;
 
-  @Column({ name: 'descricao', type: 'text', nullable: true })
-  descricao: string;
+  @Column({ name: 'DESCRICAO', type: 'text', nullable: true })
+  DESCRICAO: string;
 
-  @Column({ name: 'valor', type: 'decimal', precision: 10, scale: 2, nullable: true })
-  valor: number;
+  @Column({ name: 'VALOR', type: 'decimal', precision: 10, scale: 2, nullable: true })
+  VALOR: number;
 
-  @Column({ name: 'data_vencimento', type: 'date', nullable: true })
-  dataVencimento: Date;
+  @Column({ name: 'DATA_VENCIMENTO', type: 'date', nullable: true })
+  DATA_VENCIMENTO: Date;
 
-  @Column({ name: 'status', type: 'varchar', length: 20, nullable: true })
-  status: string;
+  @Column({ 
+    name: 'STATUS', 
+    type: 'enum', 
+    enum: ['PAGO', 'PENDENTE', 'ATRASADO', 'EXPIRADO'], 
+    nullable: true 
+  })
+  STATUS: string;
 
-  @OneToMany(() => Recebimento, recebimento => recebimento.contaReceber)
-  recebimentos: Recebimento[];
+  @OneToMany(() => Recebimento, recebimento => recebimento.ID_CONTA_RECEBER)
+  ID_RECEBIMENTO: Recebimento[]; 
 }

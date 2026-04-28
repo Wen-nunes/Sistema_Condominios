@@ -4,25 +4,30 @@ import { Pagamento } from '../../pagamentos/entities/pagamento.entity';
 
 @Entity('CONTAS_PAGAR')
 export class ContaPagar {
-  @PrimaryGeneratedColumn({ name: 'id_conta_pagar' })
-  idContaPagar: number;
+  @PrimaryGeneratedColumn({ name: 'ID_CONTA_PAGAR' })
+  ID_CONTA_PAGAR: number;
 
-  @ManyToOne(() => Fornecedor, fornecedor => fornecedor.contasPagar)
-  @JoinColumn({ name: 'id_fornecedor' })
-  fornecedor: Fornecedor;
+  @ManyToOne(() => Fornecedor, fornecedor => fornecedor.CONTAS_PAGAR)
+  @JoinColumn({ name: 'ID_FORNECEDOR' })
+  ID_FORNECEDOR: Fornecedor;
 
-  @Column({ name: 'descricao', type: 'text', nullable: true })
-  descricao: string;
+  @Column({ name: 'DESCRICAO', type: 'text', nullable: true })
+  DESCRICAO: string;
 
-  @Column({ name: 'valor', type: 'decimal', precision: 10, scale: 2, nullable: true })
-  valor: number;
+  @Column({ name: 'VALOR', type: 'decimal', precision: 10, scale: 2, nullable: true })
+  VALOR: number;
 
-  @Column({ name: 'data_vencimento', type: 'date', nullable: true })
-  dataVencimento: Date;
+  @Column({ name: 'DATA_VENCIMENTO', type: 'date', nullable: true })
+  DATA_VENCIMENTO: Date;
 
-  @Column({ name: 'status', type: 'varchar', length: 20, nullable: true })
-  status: string;
+  @Column({ 
+    name: 'STATUS', 
+    type: 'enum', 
+    enum: ['PAGO', 'PENDENTE', 'ATRASADO', 'EXPIRADO'], 
+    nullable: true 
+  })
+  STATUS: string;
 
-  @OneToMany(() => Pagamento, pagamento => pagamento.contaPagar)
-  pagamentos: Pagamento[];
+  @OneToMany(() => Pagamento, pagamento => pagamento.ID_CONTA_PAGAR)
+  ID_PAGAMENTO: Pagamento[];
 }

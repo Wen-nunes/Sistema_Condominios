@@ -4,23 +4,23 @@ import { AreaComum } from '../../areas-comuns/entities/area-comum.entity';
 
 @Entity('RESERVAS')
 export class Reserva {
-  @PrimaryGeneratedColumn({ name: 'id_reserva' })
-  idReserva: number;
+  @PrimaryGeneratedColumn({ name: 'ID_RESERVA' })
+  ID_RESERVA: number;
 
-  @Column({ name: 'data_reserva', type: 'date', nullable: true })
-  dataReserva: Date;
+  @Column({ name: 'DATA_RESERVA', type: 'date', nullable: true })
+  DATA_RESERVA: Date;
 
-  @Column({ name: 'hr_inicio', type: 'date', nullable: true })
-  hrInicio: Date;
+  @Column({ name: 'HR_INICIO', type: 'date', nullable: true })
+  HR_INICIO: Date;
 
-  @Column({ name: 'hr_fim', type: 'date', nullable: true })
-  hrFim: Date;
+  @Column({ name: 'HR_FIM', type: 'date', nullable: true })
+  HR_FIM: Date;
 
-  @ManyToOne(() => Morador, morador => morador.reservas)
-  @JoinColumn({ name: 'id_morador' })
-  morador: Morador;
+  @ManyToOne(() => Morador, morador => morador.ID_RESERVAS)
+  @JoinColumn({ name: 'ID_MORADOR' })
+  ID_MORADOR: Morador;
 
-  @ManyToOne(() => AreaComum, areaComum => areaComum.reservas)
-  @JoinColumn({ name: 'id_areas_comum' })
-  areaComum: AreaComum;
+  @ManyToOne(() => AreaComum, areaComum => areaComum.ID_RESERVA)
+  @JoinColumn({ name: 'ID_AREA_COMUM' })
+  ID_AREA_COMUM: AreaComum;
 }

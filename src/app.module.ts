@@ -37,7 +37,7 @@ import { ConfigModule } from '@nestjs/config';
       port: 3306,
       username: 'root',
       password: 'laboratorio',
-      database: 'DBCONDOMINIO',
+      database: 'DBCONDOMINIOS',
       autoLoadEntities: true,
       synchronize: false,
     }),

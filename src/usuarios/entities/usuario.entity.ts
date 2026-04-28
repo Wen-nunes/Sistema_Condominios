@@ -1,16 +1,23 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('usuarios')
+@Entity('USUARIOS') // Coloque em maiúsculo para bater com seu SQL
 export class Usuario {
-  @PrimaryGeneratedColumn()
+  
+  @PrimaryGeneratedColumn({ name: 'ID_USUARIO' }) // A PK real do banco
+  ID_USUARIO: number;
+
+  @Column({ name: 'ID_PESSOA' }) // ID_PESSOA é apenas uma coluna comum/FK
   ID_PESSOA: number;
 
-  @Column()
+  @Column({ name: 'NOME' })
   NOME: string;
 
-  @Column({ unique: true })
+  @Column({ name: 'CPF_CNPJ', unique: true })
   CPF_CNPJ: string;
 
-  @Column()
-  password: string; // Onde ficará o hash do bcrypt
+  @Column({ name: 'password' })
+  password: string;
+
+  @Column({ name: 'ATIVO', default: 1 })
+  ATIVO: number;
 }

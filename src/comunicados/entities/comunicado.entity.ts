@@ -2,21 +2,21 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('COMUNICADOS')
 export class Comunicado {
-  @PrimaryGeneratedColumn({ name: 'id_comunicado' })
-  idComunicado: number;
+  @PrimaryGeneratedColumn({ name: 'ID_COMUNICADO' })
+  ID_COMUNICADO: number;
 
-  @Column({ name: 'titulo', type: 'varchar', length: 255 })
-  titulo: string;
+  @Column({ name: 'TITULO', type: 'varchar', length: 255 })
+  TITULO: string;
 
-  @Column({ name: 'mensagem', type: 'text' })
-  mensagem: string;
+  @Column({ name: 'MENSAGEM', type: 'text' })
+  MENSAGEM: string;
 
-  @Column({ name: 'dt_comunicado', type: 'date' })
-  dtComunicado: Date;
+  @Column({ name: 'DT_COMUNICADO', type: 'date' })
+  DT_COMUNICADO: Date;
 
-  @Column({ name: 'hr_comunicado', type: 'time', nullable: true })
-  hrComunicado: string;
+  @Column({ name: 'HR_COMUNICADO', type: 'time', nullable: true })
+  HR_COMUNICADO: string;
 
-  @Column({ name: 'tipo', type: 'varchar', length: 30, nullable: true })
-  tipo: string;
+  @Column({ name: 'TIPO', type: 'varchar', length: 30, nullable: true })
+  TIPO: string;
 }

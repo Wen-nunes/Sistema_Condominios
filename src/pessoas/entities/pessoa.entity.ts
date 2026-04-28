@@ -23,21 +23,22 @@ export class Pessoa {
   @Column({ name: 'DATA_CADASTRO', type: 'date', nullable: true })
   DATA_CADASTRO: Date;
 
-  @OneToMany(() => Morador, morador => morador.pessoa)
-  moradores: Morador[];
+  @OneToMany(() => Morador, morador => morador.PESSOA)
+  ID_MORADORES: Morador[];
 
-  @OneToMany(() => Contato, contato => contato.pessoa)
-  contatos: Contato[];
+  @OneToMany(() => Contato, contato => contato.PESSOA)
+  ID_CONTATOS: Contato[];
 
-  @OneToMany(() => Endereco, endereco => endereco.pessoa)
-  enderecos: Endereco[];
+  @OneToMany(() => Endereco, endereco => endereco.PESSOA)
+  ID_ENDERECOS: Endereco[];
 
-  @OneToMany(() => Funcionario, funcionario => funcionario.pessoa)
-  funcionarios: Funcionario[];
+  @OneToMany(() => Funcionario, funcionario => funcionario.PESSOA)
+  ID_FUNCIONARIOS: Funcionario[];
 
-  @OneToMany(() => Fornecedor, fornecedor => fornecedor.pessoa)
-  fornecedores: Fornecedor[];
+  @OneToMany(() => Fornecedor, fornecedor => fornecedor.PESSOA)
+  ID_FORNECEDORES: Fornecedor[];
 
-  @OneToMany(() => Visitante, visitante => visitante.pessoa)
-  visitantes: Visitante[];
+  @OneToMany(() => Visitante, visitante => visitante.PESSOA)
+  ID_VISITANTES: Visitante[];
+  CONTATOS: any;
 }

@@ -4,24 +4,24 @@ import { Visita } from '../../visitas/entities/visita.entity';
 
 @Entity('UNIDADES')
 export class Unidade {
-  @PrimaryGeneratedColumn({ name: 'id_unidade' })
-  idUnidade: number;
+  @PrimaryGeneratedColumn({ name: 'ID_UNIDADE' })
+  ID_UNIDADE: number;
 
-  @Column({ name: 'num_unidade', type: 'int' })
-  numUnidade: number;
+  @Column({ name: 'NUM_UNIDADE', type: 'int' })
+  NUM_UNIDADE: number;
 
-  @Column({ name: 'bloco', type: 'int' })
-  bloco: number;
+  @Column({ name: 'BLOCO', type: 'int' })
+  BLOCO: number;
 
-  @Column({ name: 'tipo', type: 'varchar', length: 255 })
-  tipo: string;
+  @Column({ name: 'TIPO', type: 'varchar', length: 255 })
+  TIPO: string;
 
-  @Column({ name: 'area_total', type: 'float', nullable: true })
-  areaTotal: number;
+  @Column({ name: 'AREA_TOTAL', type: 'float', nullable: true })
+  AREA_TOTAL: number;
 
   @OneToMany(() => Morador, morador => morador.unidade)
-  moradores: Morador[];
+  ID_MORADORES: Morador[];
 
-  @OneToMany(() => Visita, visita => visita.unidade)
-  visitas: Visita[];
+  @OneToMany(() => Visita, visita => visita.ID_MORADOR)
+  ID_VISITAS: Visita[];
 }

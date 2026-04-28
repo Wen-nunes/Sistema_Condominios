@@ -8,26 +8,28 @@ import { ContaReceber } from '../../contas-receber/entities/conta-receber.entity
 
 @Entity('MORADORES')
 export class Morador {
-  @PrimaryGeneratedColumn({ name: 'id_morador' })
-  idMorador: number;
+  @PrimaryGeneratedColumn({ name: 'ID_MORADOR' })
+  ID_MORADOR: number;
 
-  @ManyToOne(() => Pessoa, pessoa => pessoa.moradores)
-  @JoinColumn({ name: 'id_pessoa' })
-  pessoa: Pessoa;
+  @ManyToOne(() => Pessoa, pessoa => pessoa.ID_MORADORES)
+  @JoinColumn({ name: 'ID_PESSOA' })
+  ID_PESSOA: Pessoa;
 
-  @ManyToOne(() => Unidade, unidade => unidade.moradores)
-  @JoinColumn({ name: 'id_unidade' })
-  unidade: Unidade;
+  @ManyToOne(() => Unidade, unidade => unidade.ID_MORADORES)
+  @JoinColumn({ name: 'ID_UNIDADE' })
+  ID_UNIDADE: Unidade;
 
-  @OneToMany(() => Reserva, reserva => reserva.morador)
-  reservas: Reserva[];
+  @OneToMany(() => Reserva, reserva => reserva.ID_MORADOR)
+  ID_RESERVAS: Reserva[];
 
-  @OneToMany(() => Boleto, boleto => boleto.morador)
-  boletos: Boleto[];
+  @OneToMany(() => Boleto, boleto => boleto.ID_MORADOR)
+  ID_BOLETOS: Boleto[];
 
-  @OneToMany(() => Visita, visita => visita.moradorAutorizacao)
-  visitasAutorizadas: Visita[];
+  @OneToMany(() => Visita, visita => visita.ID_MORADOR)
+  ID_VISITAS_AUTORIZADAS: Visita[];
 
-  @OneToMany(() => ContaReceber, contaReceber => contaReceber.morador)
-  contasReceber: ContaReceber[];
+  @OneToMany(() => ContaReceber, contaReceber => contaReceber.ID_MORADOR)
+  ID_CONTA_RECEBER: ContaReceber[];
+  PESSOA: any;
+  unidade: any;
 }
