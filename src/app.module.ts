@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppService, DashboardService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { ContatosModule } from './contatos/contatos.module';
@@ -25,6 +25,11 @@ import { ContaCorrenteModule } from './conta-corrente/conta-corrente.module';
 import { MovContaCorrenteModule } from './mov-conta-corrente/mov-conta-corrente.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { Morador } from './moradores/entities/morador.entity';
+import { Boleto } from './boletos/entities/boleto.entity';
+import { Reserva } from './reservas/entities/reserva.entity';
+import { Comunicado } from './comunicados/entities/comunicado.entity';
+import { DashboardController } from './dashbord/dashbord.controller';
 
 @Module({
   imports: [
@@ -41,6 +46,7 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
       synchronize: false,
     }),
+    TypeOrmModule.forFeature([Morador, Boleto, Reserva, Comunicado]),
     PessoasModule,
     ContatosModule,
     EnderecosModule,
@@ -62,9 +68,11 @@ import { ConfigModule } from '@nestjs/config';
     RecebimentosModule,
     ContaCorrenteModule,
     MovContaCorrenteModule,
+    PessoasModule,
     AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, DashboardController], 
+  providers: [AppService, DashboardService],
+  
 })
 export class AppModule { }
